@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import scrapy
+import re
 
 
 class JingbotSpider(scrapy.spiders.CrawlSpider):
@@ -35,3 +36,8 @@ class JingbotSpider(scrapy.spiders.CrawlSpider):
                             'link': item[1]
                             }
             yield scraped_info
+
+    def find_string(body, string):
+        found = re.search(string, body)
+        if found:
+          return body 
